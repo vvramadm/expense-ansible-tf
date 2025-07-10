@@ -1,4 +1,3 @@
 mysql_root_password: ExpenseApp1
-login_host: mysql.ramops.online
 app_location: /app
 component: backend
