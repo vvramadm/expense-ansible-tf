@@ -1,7 +1,5 @@
-- name: Disable default nodejs module if it exists
-  shell: dnf module disable nodejs -y
-  when: "'nodejs' in nodejs_module_list.stdout"
-  become: yes
+- name: disable default nodejs
+    ansible.builtin.command: dnf module disable nodejs -y
 
 - name: enable nodejs 20
   ansible.builtin.command: dnf module enable nodejs:20 -y
