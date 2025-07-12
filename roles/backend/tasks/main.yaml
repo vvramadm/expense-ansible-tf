@@ -1,15 +1,15 @@
 #- name: disable default nodejs
 #  ansible.builtin.command: dnf module disable nodejs -y
 
-- name: enable nodejs 22
-  ansible.builtin.command: dnf module enable nodejs:22 -y
+#- name: enable nodejs 22
+#  ansible.builtin.command: dnf module enable nodejs:22 -y
 
 - name: install nodejs
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop:
-  - nodejs
+  - nodejs:22
   - mysql
 
 - name: create expense user
