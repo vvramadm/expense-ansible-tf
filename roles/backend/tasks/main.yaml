@@ -4,13 +4,23 @@
 #- name: enable nodejs 22
 #  ansible.builtin.command: dnf module enable nodejs:22 -y
 
+- name: Download the RPM file
+  ansible.builtin.command: sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm 
+  
+- name: Install RPM file
+  ansible.builtin.command: sudo dnf install mysql80-community-release-el9-1.noarch.rpm -y  
+  
+- name: You need the public key of mysql to install the software.
+  ansible.builtin.command: sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+ 
 - name: install nodejs
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop:
   - nodejs
-  - mysql
+  - mysql-community-client
+  #- mysql
 
 - name: create expense user
   ansible.builtin.user:
