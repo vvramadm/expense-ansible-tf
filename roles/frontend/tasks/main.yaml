@@ -2,10 +2,14 @@
   ansible.builtin.package:
     name: nginx
     state: present
-- name: start nginx server
+    
+- name: install nginx server
+  ansible.builtin.cmd: systemctl start nginx -y
+        
+- name: start nginx enable server
   ansible.builtin.service:
     name: nginx
-    state: started
+    #state: started
     enabled: yes
 
 - name: import tasks from common role
