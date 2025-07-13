@@ -4,7 +4,7 @@
     state: present
     
 - name: install nginx server
-  ansible.builtin.command: systemctl start nginx -y
+  ansible.builtin.command: systemctl start nginx 
         
 - name: start nginx enable server
   ansible.builtin.service:
