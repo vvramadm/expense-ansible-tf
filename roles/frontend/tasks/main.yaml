@@ -1,15 +1,15 @@
+#- name: install nginx server
+#  ansible.builtin.package:
+#    name: nginx
+#    state: present
+
 - name: install nginx server
-  ansible.builtin.package:
-    name: nginx
-    state: present
-    
-- name: install nginx server
-  ansible.builtin.command: sudo systemctl start nginx 
-        
+  ansible.builtin.command: sudo amazon-linux-extras install nginx -y
+       
 - name: start nginx enable server
   ansible.builtin.service:
     name: nginx
-    #state: started
+    state: started
     enabled: yes
 
 - name: import tasks from common role
